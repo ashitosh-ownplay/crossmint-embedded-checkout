@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.ts',
@@ -31,6 +32,10 @@ module.exports = {
       '@configs': path.resolve(__dirname, 'src/configs'),
       '@utils': path.resolve(__dirname, 'src/utils')
     },
+    fallback: {
+      "buffer": require.resolve("buffer/"),
+      "stream": false
+    }
 
   },
   output: {
@@ -50,6 +55,9 @@ module.exports = {
       ],
     }),
     new Dotenv(), // Load environment variables from .env file
+    new webpack.ProvidePlugin({
+      Buffer: ['buffer', 'Buffer'],
+    }),
   ],
   mode: 'production',
 };

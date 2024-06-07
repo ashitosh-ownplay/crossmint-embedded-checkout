@@ -67,7 +67,7 @@ export function loadButtonsForPayment() {
           personalAccount: embeddedAccount,
         });
 
-        loadCryptoPayment(smartAccount);
+        await loadCryptoPayment(smartAccount);
       } else {
         const mmWallet = createWallet("io.metamask");
         const mmAccount = await mmWallet.connect({

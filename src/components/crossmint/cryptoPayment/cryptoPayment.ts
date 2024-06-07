@@ -15,6 +15,8 @@ import { collectionId, environment, projectId } from "@configs/consts";
 import { prepareTransaction, sendAndConfirmTransaction } from "thirdweb";
 import { Account } from "thirdweb/wallets";
 import { createCrossmintEmbeddedCheckoutIFrame } from "./crossmintEmbeddedIframe";
+import { prepareSignatureMint } from "@utils/erc721MintSignature";
+import { cityBuildings } from "@configs/dynamicNFTdata";
 
 // This function is equivalent to the React component
 export function createCryptoEmbeddedCheckoutIFrame(
@@ -124,7 +126,15 @@ export function createCryptoEmbeddedCheckoutIFrame(
   return createIframe();
 }
 
-function getCryptoProps(account: Account) {
+async function getCryptoProps(account: Account) {
+  const { mintRequest: mintReq, signature: sig } = await prepareSignatureMint(
+    account?.address,
+    cityBuildings[0]
+  );
+
+  console.log("sig: ", sig);
+  console.log("mintReq: ", mintReq);
+
   // Example usage
   return {
     projectId: projectId,
@@ -166,6 +176,8 @@ function getCryptoProps(account: Account) {
     mintConfig: {
       type: "erc-721",
       totalPrice: "0.001", // TODO - update price
+      _req: mintReq, // mintRequest,
+      _signature: sig, // signature
     },
     onEvent: (event: { type: any; payload: { orderIdentifier: string } }) => {
       switch (event.type) {
@@ -181,6 +193,9 @@ function getCryptoProps(account: Account) {
   };
 }
 
-export const loadCryptoPayment = (account?: Account) => {
-  account ? createCryptoEmbeddedCheckoutIFrame(getCryptoProps(account)) : null;
+export const loadCryptoPayment = async (account?: Account) => {
+  if (account) {
+    const props = await getCryptoProps(account);
+    createCryptoEmbeddedCheckoutIFrame(props);
+  }
 };
