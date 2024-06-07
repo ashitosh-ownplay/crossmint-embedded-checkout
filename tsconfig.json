@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": [
+        "components/*"
+      ],
+      "@client-sdk-base/*": [
+        "client-sdk-base/*"
+      ],
+      "@common-sdk-base/*": [
+        "common-sdk-base/*"
+      ],
+      "@configs/*": [
+        "configs/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "src/custom.d.ts"
+  ]
+}
