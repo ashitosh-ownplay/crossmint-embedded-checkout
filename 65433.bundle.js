@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcrossmint_embedded_checkout=self.webpackChunkcrossmint_embedded_checkout||[]).push([[65433],{65433:(e,t,s)=>{s.r(t),s.d(t,{eth_estimateGas:()=>c});var a=s(63809);async function c(e,t){const s=await e({method:"eth_estimateGas",params:[t]});return(0,a.uU)(s)}}}]);
