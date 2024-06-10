@@ -11,7 +11,14 @@ import {
 import { EVMBlockchainIncludingTestnet } from "@common-sdk-base/src";
 import { Minting } from "@components/minting";
 import { client } from "@configs/client";
-import { collectionId, environment, projectId } from "@configs/consts";
+import {
+  chainName,
+  cityBuildingsCollectionId,
+  collectionId,
+  crossmintProjectId,
+  environment,
+  projectId,
+} from "@configs/consts";
 import { prepareTransaction, sendAndConfirmTransaction } from "thirdweb";
 import { Account } from "thirdweb/wallets";
 import { createCrossmintEmbeddedCheckoutIFrame } from "./crossmintEmbeddedIframe";
@@ -137,8 +144,8 @@ async function getCryptoProps(account: Account) {
 
   // Example usage
   return {
-    projectId: projectId,
-    collectionId: collectionId,
+    projectId: crossmintProjectId,
+    collectionId: cityBuildingsCollectionId[chainName],
     environment: environment,
     paymentMethod: PaymentMethod.ETH,
     signer: {
@@ -174,8 +181,8 @@ async function getCryptoProps(account: Account) {
       },
     },
     mintConfig: {
-      type: "erc-721",
-      totalPrice: "0.001", // TODO - update price
+      // type: "erc-721",
+      totalPrice: "0.0001", // TODO - update price
       _req: mintReq, // mintRequest,
       _signature: sig, // signature
     },
