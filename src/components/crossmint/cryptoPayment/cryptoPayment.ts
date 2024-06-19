@@ -140,7 +140,7 @@ export function createCryptoEmbeddedCheckoutIFrame(
 async function getCryptoProps(account: Account) {
   const { mintRequest: mintReq, signature: sig } = await prepareSignatureMint(
     account?.address,
-    cityBuildings[0]
+    cityBuildings[9]
   );
 
   console.log("sig: ", sig);
