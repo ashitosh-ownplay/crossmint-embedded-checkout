@@ -11,8 +11,19 @@ import {
 import { EVMBlockchainIncludingTestnet } from "@common-sdk-base/src";
 import { Minting } from "@components/minting";
 import { client } from "@configs/client";
-import { collectionId, environment, projectId } from "@configs/consts";
-import { prepareTransaction, sendAndConfirmTransaction } from "thirdweb";
+import {
+  chainName,
+  cityBuildingsCollectionId,
+  collectionId,
+  crossmintProjectId,
+  environment,
+} from "@configs/consts";
+import {
+  NATIVE_TOKEN_ADDRESS,
+  prepareTransaction,
+  sendAndConfirmTransaction,
+  toEther,
+} from "thirdweb";
 import { Account } from "thirdweb/wallets";
 import { createCrossmintEmbeddedCheckoutIFrame } from "./crossmintEmbeddedIframe";
 import { prepareSignatureMint } from "@utils/erc721MintSignature";
@@ -137,10 +148,11 @@ async function getCryptoProps(account: Account) {
 
   // Example usage
   return {
-    projectId: projectId,
-    collectionId: collectionId,
+    projectId: crossmintProjectId,
+    collectionId: cityBuildingsCollectionId[chainName],
     environment: environment,
     paymentMethod: PaymentMethod.ETH,
+    recipient: { wallet: account?.address },
     signer: {
       address: account?.address, // public address of connected wallet
       signAndSendTransaction: async (transaction: any) => {
@@ -174,8 +186,11 @@ async function getCryptoProps(account: Account) {
       },
     },
     mintConfig: {
-      type: "erc-721",
-      totalPrice: "0.001", // TODO - update price
+      // type: "erc-721",
+      totalPrice:
+        mintReq.currency.toLowerCase() === NATIVE_TOKEN_ADDRESS.toLowerCase()
+          ? toEther(BigInt(mintReq.price))
+          : String(Number(mintReq.price) / 10 ** 6),
       _req: mintReq, // mintRequest,
       _signature: sig, // signature
     },
