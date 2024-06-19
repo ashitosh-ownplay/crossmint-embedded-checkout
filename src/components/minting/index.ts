@@ -72,7 +72,7 @@ export function Minting(orderIdentifier: string) {
       links.className = "mt-10";
 
       const viewOnOpenSea = createLink(
-        "https://testnets.opensea.io/assets/amoy/",
+        "https://testnets.opensea.io/assets/sepolia/",
         result?.contractAddress,
         result?.tokenIds[0],
         "View on OpenSea"
@@ -84,7 +84,7 @@ export function Minting(orderIdentifier: string) {
       );
 
       const viewOnPolygonscan = createLink(
-        "https://amoy.polygonscan.com/tx/",
+        "https://sepolia.etherscan.io/tx/",
         result?.txId,
         null,
         "View on Polygonscan"
@@ -97,7 +97,7 @@ export function Minting(orderIdentifier: string) {
       );
 
       const viewInCrossmint = createLink(
-        "https://staging.crossmint.com/user/collection/polygon-amoy:",
+        "https://staging.crossmint.com/user/collection/sepolia:",
         result?.contractAddress + ":" + result?.tokenIds[0],
         null,
         "View in Crossmint"
