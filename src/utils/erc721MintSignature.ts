@@ -9,11 +9,9 @@ import {
   reservoirChains,
 } from "@configs/consts";
 import { ERC721MintWithSignatureParams } from "@configs/dynamicNFTdata";
-// import { TypedDataSigner } from "@ethersproject/abstract-signer";
 import { TypedMessage, signTypedData_v4 } from "eth-sig-util";
 import { toBuffer } from "ethereumjs-util";
-import { sha256 } from 'js-sha256';
-
+import { sha256 } from "js-sha256";
 
 export type ERC721MintRequest = {
   to: string;

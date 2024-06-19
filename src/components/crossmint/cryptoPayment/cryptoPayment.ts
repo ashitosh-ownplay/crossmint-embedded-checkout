@@ -17,7 +17,6 @@ import {
   collectionId,
   crossmintProjectId,
   environment,
-  projectId,
 } from "@configs/consts";
 import {
   NATIVE_TOKEN_ADDRESS,
@@ -153,7 +152,7 @@ async function getCryptoProps(account: Account) {
     collectionId: cityBuildingsCollectionId[chainName],
     environment: environment,
     paymentMethod: PaymentMethod.ETH,
-    mintTo: account?.address,
+    recipient: { wallet: account?.address },
     signer: {
       address: account?.address, // public address of connected wallet
       signAndSendTransaction: async (transaction: any) => {
@@ -189,10 +188,9 @@ async function getCryptoProps(account: Account) {
     mintConfig: {
       // type: "erc-721",
       totalPrice:
-        cityBuildings[0].currency.toLowerCase() ===
-        NATIVE_TOKEN_ADDRESS.toLowerCase()
+        mintReq.currency.toLowerCase() === NATIVE_TOKEN_ADDRESS.toLowerCase()
           ? toEther(BigInt(mintReq.price))
-          : String(Number(mintReq.price) / 10 ** 6), // USDC token decimals - 6
+          : String(Number(mintReq.price) / 10 ** 6),
       _req: mintReq, // mintRequest,
       _signature: sig, // signature
     },

@@ -133,7 +133,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/0.json`,
     price: !isUsdcEnabled ? "100000000000000" : "10000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6400",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6400",
     metadata: {
       name: "320 EAST 79 STREET",
       description: "320 EAST 79 STREET #1 Description",
@@ -161,7 +161,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6400",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6400",
         },
       ],
     },
@@ -170,7 +170,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/1.json`,
     price: !isUsdcEnabled ? "200000000000000" : "20000", // 0.02 MATIC OR // 0.02 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6401",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6401",
     metadata: {
       name: "14 MOTT STREET",
       description: "14 MOTT STREET Description",
@@ -198,7 +198,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6401",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6401",
         },
       ],
     },
@@ -207,7 +207,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/2.json`,
     price: !isUsdcEnabled ? "300000000000000" : "30000", // 0.03 MATIC OR // 0.03 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6402",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6402",
     metadata: {
       name: "318 EAST 11 STREET",
       description: "318 EAST 11 STREET Description",
@@ -235,7 +235,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6402",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6402",
         },
       ],
     },
@@ -244,7 +244,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/3.json`,
     price: !isUsdcEnabled ? "400000000000000" : "40000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6403",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6403",
     metadata: {
       name: "523 EAST 83 STREET",
       description: "523 EAST 83 STREET Description",
@@ -272,7 +272,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6403",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6403",
         },
       ],
     },
@@ -281,7 +281,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/4.json`,
     price: "40000", // 0.05 USDC // ERC20 w. 6 decimals
     currency: usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6404",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6404",
     metadata: {
       name: "39 WEST 129 STREET",
       description: "39 WEST 129 STREET Description",
@@ -309,7 +309,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6404",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6404",
         },
       ],
     },
@@ -318,7 +318,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/5.json`,
     price: !isUsdcEnabled ? "100000000000000" : "10000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6405",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6405",
     metadata: {
       name: "507 WEST 184 STREET",
       description: "507 WEST 184 STREET Description",
@@ -346,7 +346,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6405",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6405",
         },
       ],
     },
@@ -355,7 +355,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/6.json`,
     price: "20000", // 0.02 USDC // ERC20 w. 6 decimals
     currency: usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6406",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6406",
     metadata: {
       name: "243 WEST 72 STREET",
       description: "243 WEST 72 STREET Description",
@@ -383,7 +383,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6406",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6406",
         },
       ],
     },
@@ -392,7 +392,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/7.json`,
     price: !isUsdcEnabled ? "300000000000000" : "30000", // 0.03 MATIC OR // 0.03 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6407",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6407",
     metadata: {
       name: "340 EAST 55 STREET",
       description: "340 EAST 55 STREET Description",
@@ -420,7 +420,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6407",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6407",
         },
       ],
     },
@@ -429,7 +429,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/8.json`,
     price: !isUsdcEnabled ? "400000000000000" : "40000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6408",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6408",
     metadata: {
       name: "2500 FREDRICK DOUGLASS BL",
       description: "2500 FREDRICK DOUGLASS BL Description",
@@ -457,7 +457,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6408",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6408",
         },
       ],
     },
@@ -466,7 +466,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/9.json`,
     price: !isUsdcEnabled ? "500000000000000" : "50000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6409",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6409",
     metadata: {
       name: "29 SPRING STREET",
       description: "29 SPRING STREET Description",
@@ -494,7 +494,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6409",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6409",
         },
       ],
     },
@@ -503,7 +503,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/10.json`,
     price: !isUsdcEnabled ? "100000000000000" : "10000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6410",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6410",
     metadata: {
       name: "193 EAST 4 STREET",
       description: "193 EAST 4 STREET Description",
@@ -531,7 +531,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6410",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6410",
         },
       ],
     },
@@ -540,7 +540,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/11.json`,
     price: !isUsdcEnabled ? "200000000000000" : "20000", // 0.02 MATIC OR // 0.02 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6411",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6411",
     metadata: {
       name: "2655 FREDRICK DOUGLASS BL",
       description: "2655 FREDRICK DOUGLASS BL Description",
@@ -568,7 +568,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6411",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6411",
         },
       ],
     },
@@ -577,7 +577,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/12.json`,
     price: !isUsdcEnabled ? "300000000000000" : "30000", // 0.03 MATIC OR // 0.03 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6412",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6412",
     metadata: {
       name: "2504 ADAM C POWELL BLVD",
       description: "2504 ADAM C POWELL BLVD Description",
@@ -605,7 +605,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6412",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6412",
         },
       ],
     },
@@ -614,7 +614,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/13.json`,
     price: !isUsdcEnabled ? "400000000000000" : "40000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6413",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6413",
     metadata: {
       name: "573 ISHAM STREET",
       description: "573 ISHAM STREET Description",
@@ -642,7 +642,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6413",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6413",
         },
       ],
     },
@@ -651,7 +651,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/14.json`,
     price: !isUsdcEnabled ? "500000000000000" : "50000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6414",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6414",
     metadata: {
       name: "209 WEST 135 STREET",
       description: "209 WEST 135 STREET Description",
@@ -679,7 +679,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6414",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6414",
         },
       ],
     },
@@ -688,7 +688,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/15.json`,
     price: !isUsdcEnabled ? "100000000000000" : "10000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6415",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6415",
     metadata: {
       name: "143 WEST 74 STREET",
       description: "143 WEST 74 STREET Description",
@@ -716,7 +716,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6415",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6415",
         },
       ],
     },
@@ -725,7 +725,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/16.json`,
     price: !isUsdcEnabled ? "200000000000000" : "20000", // 0.02 MATIC OR // 0.02 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6416",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6416",
     metadata: {
       name: "13 WEST 9 STREET",
       description: "13 WEST 9 STREET Description",
@@ -753,7 +753,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6416",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6416",
         },
       ],
     },
@@ -762,7 +762,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/17.json`,
     price: !isUsdcEnabled ? "300000000000000" : "30000", // 0.03 MATIC OR // 0.03 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6417",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6417",
     metadata: {
       name: "415 RIVERSIDE DRIVE",
       description: "415 RIVERSIDE DRIVE Description",
@@ -790,7 +790,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6417",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6417",
         },
       ],
     },
@@ -799,7 +799,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/18.json`,
     price: !isUsdcEnabled ? "400000000000000" : "40000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6418",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6418",
     metadata: {
       name: "856 AMSTERDAM AVENUE",
       description: "856 AMSTERDAM AVENUE Description",
@@ -827,7 +827,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6418",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6418",
         },
       ],
     },
@@ -836,7 +836,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/19.json`,
     price: !isUsdcEnabled ? "500000000000000" : "50000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
-    uid: "11185a27-50fd-4a0c-b31b-31f1a56e6419",
+    uid: "99000000-50fd-4a0c-b31b-31f1a56e6419",
     metadata: {
       name: "243 SEAMAN AVENUE",
       description: "243 SEAMAN AVENUE Description",
@@ -864,7 +864,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
         },
         {
           trait_type: "buildingId",
-          value: "11185a27-50fd-4a0c-b31b-31f1a56e6419",
+          value: "99000000-50fd-4a0c-b31b-31f1a56e6419",
         },
       ],
     },

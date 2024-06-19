@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist && webpack --config webpack.config.js",
-    "start": "sudo yarn build && lite-server",
+    "start": "yarn build && lite-server",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d dist"
   },
