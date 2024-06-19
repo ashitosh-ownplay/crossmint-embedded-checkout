@@ -1,4 +1,19 @@
+import { getContract } from "thirdweb";
 import ninjanaut from "../ninjanaut.png";
+import { getNFT } from "thirdweb/extensions/erc721";
+import { chainName, chains, cityBuildingsNFTAddress } from "@configs/consts";
+import { getContractMetadata } from "thirdweb/extensions/common";
+import { client } from "@configs/client";
+import { ipfsUrlToHttp } from "@utils/index";
+
+const contract = getContract({
+  client,
+  chain: chains[chainName],
+  address: cityBuildingsNFTAddress[chainName],
+});
+const collectionInfo = await getContractMetadata({
+  contract,
+});
 
 // Create the outer div with classes
 export const collectionInfoTag = document.createElement("div");
@@ -6,7 +21,7 @@ collectionInfoTag.className = "sm:col-span-2 flex flex-col";
 
 // Create the Image element
 const image = document.createElement("img");
-image.src = ninjanaut;
+image.src = ipfsUrlToHttp(collectionInfo.image);
 image.width = 500;
 image.height = 500;
 image.className = "rounded-lg shrink";
@@ -23,13 +38,12 @@ innerDiv.className = "justify-between p-5 my-6 space-y-3 rounded-lg border";
 // Create the first paragraph
 const paragraph1 = document.createElement("p");
 paragraph1.className = "text-sm text-black font-bold";
-paragraph1.textContent = "This is a test collection";
+paragraph1.textContent = collectionInfo.name;
 
 // Create the second paragraph
 const paragraph2 = document.createElement("p");
 paragraph2.className = "text-sm text-black";
-paragraph2.textContent =
-  "You can test out the purchase experience by using the test credit card below and enter random information for other payment details.";
+paragraph2.textContent = collectionInfo.description;
 
 // Append paragraphs to the inner div
 innerDiv.appendChild(paragraph1);
