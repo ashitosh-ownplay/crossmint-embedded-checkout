@@ -178,8 +178,8 @@ export const isUsdcEnabled = process.env.USDC_ENABLED === "true";
 
 // crossmint initial data
 export const projectId = "42c43e55-f92d-4b25-bc99-d8309b6e1f38";
-export const collectionId = "c42568b5-3edb-4627-87bb-c7408fd747fb";
-export const environment =  process.env.CROSSMINT_ENV || "staging";
+export const collectionId = "a7f3cd86-f678-4be4-a84f-9b595f171b24";
+export const environment = process.env.CROSSMINT_ENV || "staging";
 
 export const SALE_DURATION_SECONDS = 604800; // One week in seconds
 export const marketplaceSource = "cityverse.tycoon.test";
@@ -187,4 +187,4 @@ export const royaltyRecipient = "0xA0fdFBfB2FB279eFCa16266d509c50Ed83d31643";
 export const royaltyBps = "500"; // 5%
 export const primarySaleRecipient =
   "0xA0fdFBfB2FB279eFCa16266d509c50Ed83d31643";
-export const signatureValidityPeriod = 86400; // day in seconds
+export const signatureValidityPeriod = 10 * 86400; // day in seconds

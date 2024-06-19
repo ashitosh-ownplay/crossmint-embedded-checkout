@@ -2,19 +2,11 @@ import {
   CrossmintEmbeddedCheckoutProps,
   IncomingInternalEvent,
   IncomingInternalEvents,
-  PaymentMethod,
   crossmintIFrameService,
 } from "@client-sdk-base/src";
 import { crossmintParent } from "..";
 import { Minting } from "@components/minting";
-import {
-  chainName,
-  chains,
-  collectionId,
-  environment,
-  projectId,
-} from "@configs/consts";
-import { EVMBlockchainIncludingTestnet } from "@common-sdk-base/src";
+import { collectionId, environment, projectId } from "@configs/consts";
 
 type CrossmintEmbeddedCheckoutIFrameProps = CrossmintEmbeddedCheckoutProps & {
   onInternalEvent?: (event: IncomingInternalEvent) => void;
