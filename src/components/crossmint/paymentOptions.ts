@@ -1,6 +1,12 @@
 import { crossmintParent } from ".";
 import { loadCardPayment } from "./cardPayment/crossmintPayment";
-import { createWallet, inAppWallet, smartWallet } from "thirdweb/wallets";
+import {
+  Account,
+  Wallet,
+  createWallet,
+  inAppWallet,
+  smartWallet,
+} from "thirdweb/wallets";
 import { client } from "@configs/client";
 import { chainName, chains, smartWalletFactory } from "@configs/consts";
 import { predictSmartWalletAddress } from "@utils/index";
@@ -21,8 +27,8 @@ export async function getSmartWallet() {
   try {
     const isInAppWalletEnabled = process.env.ENABLE_IN_APP_WALLET;
     if (isInAppWalletEnabled === "true") {
-      let wallet: any;
-      let smartAccount: any;
+      let wallet: Wallet;
+      let smartAccount: Account;
 
       const ebmedded = inAppWallet({});
 
@@ -49,13 +55,13 @@ export async function getSmartWallet() {
         client,
         personalAccount: embeddedAccount,
       });
-      return smartAccount;
+      return { smartAccount, wallet };
     } else {
       const mmWallet = createWallet("io.metamask");
       const mmAccount = await mmWallet.connect({
         client,
       }); // connect to it
-      return mmAccount;
+      return { smartAccount: mmAccount, wallet: mmWallet };
     }
   } catch (error) {
     console.log(error);
@@ -80,8 +86,11 @@ export function loadButtonsForPayment() {
   // Add embedded wallet
   cryptoButton.addEventListener("click", async () => {
     try {
-      const smartAccount = await getSmartWallet();
-      await loadCryptoPayment(smartAccount);
+      const res = await getSmartWallet();
+      if (res) {
+        const { smartAccount, wallet } = res;
+        await loadCryptoPayment(smartAccount, wallet);
+      }
     } catch (e) {
       console.error("error connecting to embedded smart wallet", e);
     }
@@ -89,8 +98,11 @@ export function loadButtonsForPayment() {
 
   cardButton.addEventListener("click", async () => {
     try {
-      const smartAccount = await getSmartWallet();
-      await loadCardPayment(smartAccount);
+      const res = await getSmartWallet();
+      if (res) {
+        const { smartAccount, wallet } = res;
+        await loadCardPayment(smartAccount);
+      }
     } catch (e) {
       console.error("error connecting to embedded smart wallet", e);
     }
