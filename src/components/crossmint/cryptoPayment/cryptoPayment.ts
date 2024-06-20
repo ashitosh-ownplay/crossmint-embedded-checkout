@@ -185,8 +185,9 @@ async function getCryptoProps(account: Account, wallet?: Wallet) {
           ? EVMBlockchainIncludingTestnet.BASE
           : EVMBlockchainIncludingTestnet.ETHEREUM_SEPOLIA, // the currently selected chain
       supportedChains: [
-        EVMBlockchainIncludingTestnet.BASE,
-        EVMBlockchainIncludingTestnet.ETHEREUM_SEPOLIA,
+        chainName === "base"
+          ? EVMBlockchainIncludingTestnet.BASE
+          : EVMBlockchainIncludingTestnet.ETHEREUM_SEPOLIA,
       ], // array of chains you want to enable crosschain payments on
       handleChainSwitch: async (chain: any) => {
         console.log(chain);
