@@ -2,11 +2,21 @@ import {
   CrossmintEmbeddedCheckoutProps,
   IncomingInternalEvent,
   IncomingInternalEvents,
+  PaymentMethod,
   crossmintIFrameService,
 } from "@client-sdk-base/src";
-import { crossmintParent } from "..";
 import { Minting } from "@components/minting";
-import { collectionId, environment, projectId } from "@configs/consts";
+import {
+  chainName,
+  cityBuildingsCollectionId,
+  crossmintProjectId,
+  environment,
+} from "@configs/consts";
+import { cityBuildings } from "@configs/dynamicNFTdata";
+import { prepareSignatureMint } from "@utils/erc721MintSignature";
+import { NATIVE_TOKEN_ADDRESS, toEther } from "thirdweb";
+import { Account } from "thirdweb/wallets";
+import { crossmintParent } from "..";
 
 type CrossmintEmbeddedCheckoutIFrameProps = CrossmintEmbeddedCheckoutProps & {
   onInternalEvent?: (event: IncomingInternalEvent) => void;
@@ -82,17 +92,33 @@ function CrossmintEmbeddedCheckoutIFrame(
   };
 }
 
-function getCardProps() {
+async function getCardProps(account?: Account) {
+  const { mintRequest: mintReq, signature: sig } = await prepareSignatureMint(
+    account?.address || "",
+    cityBuildings[10]
+  );
+
+  console.log("sig: ", sig);
+  console.log("mintReq: ", mintReq);
+
   return {
-    projectId: projectId,
-    collectionId: collectionId,
+    projectId: crossmintProjectId,
+    collectionId: cityBuildingsCollectionId[chainName],
     environment: environment,
+    paymentMethod: PaymentMethod.FIAT,
+    preferredSigninMethod: "metamask",
+    recipient: { wallet: account?.address },
     emailInputOptions: {
       show: true,
     },
     mintConfig: {
-      type: "erc-721",
-      totalPrice: "0.001",
+      // type: "erc-721",
+      totalPrice:
+        mintReq.currency.toLowerCase() === NATIVE_TOKEN_ADDRESS.toLowerCase()
+          ? toEther(BigInt(mintReq.price))
+          : String(Number(mintReq.price) / 10 ** 6), // NOTE - 6 -decimal of USDC
+      _req: mintReq, // mintRequest,
+      _signature: sig, // signature
     },
     onEvent: (event: { type: any; payload: { orderIdentifier: string } }) => {
       switch (event.type) {
@@ -108,6 +134,7 @@ function getCardProps() {
   };
 }
 
-export const loadCardPayment = () => {
-  CrossmintEmbeddedCheckoutIFrame(getCardProps());
+export const loadCardPayment = async (account?: Account) => {
+  const props = await getCardProps(account);
+  CrossmintEmbeddedCheckoutIFrame(props);
 };

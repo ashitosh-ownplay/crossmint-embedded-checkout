@@ -190,7 +190,7 @@ async function getCryptoProps(account: Account) {
       totalPrice:
         mintReq.currency.toLowerCase() === NATIVE_TOKEN_ADDRESS.toLowerCase()
           ? toEther(BigInt(mintReq.price))
-          : String(Number(mintReq.price) / 10 ** 6),
+          : String(Number(mintReq.price) / 10 ** 6), // NOTE - 6 -decimal of USDC
       _req: mintReq, // mintRequest,
       _signature: sig, // signature
     },

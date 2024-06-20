@@ -80,8 +80,8 @@ export function loadButtonsForPayment() {
     }
   });
 
-  cardButton.addEventListener("click", () => {
-    loadCardPayment();
+  cardButton.addEventListener("click", async () => {
+    await loadCardPayment();
   });
 
   // Append buttons to the container
