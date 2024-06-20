@@ -3,7 +3,7 @@
 import { useCrossmintEvents } from "@client-sdk-base/src";
 import { crossmintParent } from "@components/crossmint";
 import sphere from "../../sphere.gif";
-import { environment } from "@configs/consts";
+import { chainName, environment } from "@configs/consts";
 
 export function Minting(orderIdentifier: string) {
   // Define status and result variables
@@ -72,7 +72,9 @@ export function Minting(orderIdentifier: string) {
       links.className = "mt-10";
 
       const viewOnOpenSea = createLink(
-        "https://testnets.opensea.io/assets/sepolia/",
+        chainName === "base"
+          ? "https://opensea.io/assets/base/"
+          : "https://testnets.opensea.io/assets/sepolia/",
         result?.contractAddress,
         result?.tokenIds[0],
         "View on OpenSea"
@@ -84,7 +86,9 @@ export function Minting(orderIdentifier: string) {
       );
 
       const viewOnPolygonscan = createLink(
-        "https://sepolia.etherscan.io/tx/",
+        chainName === "base"
+          ? "https://basescan.org/tx/"
+          : "https://sepolia.etherscan.io/tx/",
         result?.txId,
         null,
         "View on Polygonscan"
@@ -97,7 +101,9 @@ export function Minting(orderIdentifier: string) {
       );
 
       const viewInCrossmint = createLink(
-        "https://staging.crossmint.com/user/collection/sepolia:",
+        chainName === "base"
+          ? "https://www.crossmint.com/user/collection/"
+          : "https://staging.crossmint.com/user/collection/sepolia:",
         result?.contractAddress + ":" + result?.tokenIds[0],
         null,
         "View in Crossmint"

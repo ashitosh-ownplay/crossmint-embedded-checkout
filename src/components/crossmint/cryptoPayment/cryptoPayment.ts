@@ -13,6 +13,7 @@ import { Minting } from "@components/minting";
 import { client } from "@configs/client";
 import {
   chainName,
+  chains,
   cityBuildingsCollectionId,
   crossmintProjectId,
   environment,
@@ -25,7 +26,7 @@ import {
   sendAndConfirmTransaction,
   toEther,
 } from "thirdweb";
-import { Account } from "thirdweb/wallets";
+import { Account, Wallet } from "thirdweb/wallets";
 import { createCrossmintEmbeddedCheckoutIFrame } from "./crossmintEmbeddedIframe";
 
 let buildingIndex = 0;
@@ -138,7 +139,7 @@ export function createCryptoEmbeddedCheckoutIFrame(
   return createIframe();
 }
 
-async function getCryptoProps(account: Account) {
+async function getCryptoProps(account: Account, wallet?: Wallet) {
   const { mintRequest: mintReq, signature: sig } = await prepareSignatureMint(
     account?.address,
     cityBuildings[buildingIndex]
@@ -179,11 +180,19 @@ async function getCryptoProps(account: Account) {
 
         return transactionHash;
       },
-      chain: EVMBlockchainIncludingTestnet.ETHEREUM_SEPOLIA, // the currently selected chain
-      supportedChains: [EVMBlockchainIncludingTestnet.ETHEREUM_SEPOLIA], // array of chains you want to enable crosschain payments on
+      chain:
+        chainName === "base"
+          ? EVMBlockchainIncludingTestnet.BASE
+          : EVMBlockchainIncludingTestnet.ETHEREUM_SEPOLIA, // the currently selected chain
+      supportedChains: [
+        chainName === "base"
+          ? EVMBlockchainIncludingTestnet.BASE
+          : EVMBlockchainIncludingTestnet.ETHEREUM_SEPOLIA,
+      ], // array of chains you want to enable crosschain payments on
       handleChainSwitch: async (chain: any) => {
         console.log(chain);
         // custom logic to trigger a network change in the connected wallet
+        wallet?.switchChain(chains[chainName]);
       },
     },
     mintConfig: {
@@ -222,10 +231,10 @@ async function getCryptoProps(account: Account) {
   };
 }
 
-export const loadCryptoPayment = async (account?: Account) => {
+export const loadCryptoPayment = async (account?: Account, wallet?: Wallet) => {
   try {
     if (account) {
-      const props = await getCryptoProps(account);
+      const props = await getCryptoProps(account, wallet);
 
       if (!props) return;
 
