@@ -18,6 +18,8 @@ import { NATIVE_TOKEN_ADDRESS, toEther } from "thirdweb";
 import { Account } from "thirdweb/wallets";
 import { crossmintParent } from "..";
 
+let buildingIndex = 0;
+
 type CrossmintEmbeddedCheckoutIFrameProps = CrossmintEmbeddedCheckoutProps & {
   onInternalEvent?: (event: IncomingInternalEvent) => void;
 };
@@ -92,12 +94,12 @@ function CrossmintEmbeddedCheckoutIFrame(
   };
 }
 
-async function getCardProps(account?: Account) {
+async function getCardProps(account: Account) {
   const { mintRequest: mintReq, signature: sig } = await prepareSignatureMint(
-    account?.address || "",
-    cityBuildings[10]
+    account?.address,
+    cityBuildings[buildingIndex]
   );
-
+  console.log("buildingIndex: ", buildingIndex);
   console.log("sig: ", sig);
   console.log("mintReq: ", mintReq);
 
@@ -135,6 +137,15 @@ async function getCardProps(account?: Account) {
 }
 
 export const loadCardPayment = async (account?: Account) => {
-  const props = await getCardProps(account);
-  CrossmintEmbeddedCheckoutIFrame(props);
+  try {
+    if (account) {
+      const props = await getCardProps(account);
+
+      if (!props) return;
+
+      CrossmintEmbeddedCheckoutIFrame(props);
+    }
+  } catch (error) {
+    console.log("error in card: ", error);
+  }
 };

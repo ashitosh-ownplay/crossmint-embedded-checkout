@@ -17,6 +17,50 @@ export function createButton(
   return button;
 }
 
+export async function getSmartWallet() {
+  try {
+    const isInAppWalletEnabled = process.env.ENABLE_IN_APP_WALLET;
+    if (isInAppWalletEnabled === "true") {
+      let wallet: any;
+      let smartAccount: any;
+
+      const ebmedded = inAppWallet({});
+
+      const embeddedAccount = await ebmedded.connect({
+        client,
+        strategy: "iframe",
+        chain: chains[chainName],
+      });
+      console.log("embeddedAccount.address", embeddedAccount.address);
+      wallet = smartWallet({
+        factoryAddress: smartWalletFactory[chainName],
+        chain: chains[chainName],
+        gasless: true,
+      });
+
+      const predictedAddress = await predictSmartWalletAddress(
+        embeddedAccount.address,
+        smartWalletFactory[chainName]
+      );
+
+      console.log("predictedAddress", predictedAddress);
+
+      smartAccount = await wallet.connect({
+        client,
+        personalAccount: embeddedAccount,
+      });
+      return smartAccount;
+    } else {
+      const mmWallet = createWallet("io.metamask");
+      const mmAccount = await mmWallet.connect({
+        client,
+      }); // connect to it
+      return mmAccount;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
 export function loadButtonsForPayment() {
   const buttonContainer = document.createElement("div");
   buttonContainer.className = "flex space-x-4 p-4";
@@ -36,52 +80,20 @@ export function loadButtonsForPayment() {
   // Add embedded wallet
   cryptoButton.addEventListener("click", async () => {
     try {
-      const isInAppWalletEnabled = process.env.ENABLE_IN_APP_WALLET;
-      if (isInAppWalletEnabled === "true") {
-        let wallet: any;
-        let smartAccount: any;
-
-        const ebmedded = inAppWallet({});
-
-        const embeddedAccount = await ebmedded.connect({
-          client,
-          strategy: "iframe",
-          chain: chains[chainName],
-        });
-        console.log("embeddedAccount.address", embeddedAccount.address);
-        wallet = smartWallet({
-          factoryAddress: smartWalletFactory[chainName],
-          chain: chains[chainName],
-          gasless: true,
-        });
-
-        const predictedAddress = await predictSmartWalletAddress(
-          embeddedAccount.address,
-          smartWalletFactory[chainName]
-        );
-
-        console.log("predictedAddress", predictedAddress);
-
-        smartAccount = await wallet.connect({
-          client,
-          personalAccount: embeddedAccount,
-        });
-
-        await loadCryptoPayment(smartAccount);
-      } else {
-        const mmWallet = createWallet("io.metamask");
-        const mmAccount = await mmWallet.connect({
-          client,
-        }); // connect to it
-        loadCryptoPayment(mmAccount);
-      }
+      const smartAccount = await getSmartWallet();
+      await loadCryptoPayment(smartAccount);
     } catch (e) {
       console.error("error connecting to embedded smart wallet", e);
     }
   });
 
   cardButton.addEventListener("click", async () => {
-    await loadCardPayment();
+    try {
+      const smartAccount = await getSmartWallet();
+      await loadCardPayment(smartAccount);
+    } catch (e) {
+      console.error("error connecting to embedded smart wallet", e);
+    }
   });
 
   // Append buttons to the container
