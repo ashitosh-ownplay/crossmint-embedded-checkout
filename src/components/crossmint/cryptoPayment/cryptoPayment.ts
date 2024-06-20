@@ -14,10 +14,11 @@ import { client } from "@configs/client";
 import {
   chainName,
   cityBuildingsCollectionId,
-  collectionId,
   crossmintProjectId,
   environment,
 } from "@configs/consts";
+import { cityBuildings } from "@configs/dynamicNFTdata";
+import { prepareSignatureMint } from "@utils/erc721MintSignature";
 import {
   NATIVE_TOKEN_ADDRESS,
   prepareTransaction,
@@ -26,8 +27,8 @@ import {
 } from "thirdweb";
 import { Account } from "thirdweb/wallets";
 import { createCrossmintEmbeddedCheckoutIFrame } from "./crossmintEmbeddedIframe";
-import { prepareSignatureMint } from "@utils/erc721MintSignature";
-import { cityBuildings } from "@configs/dynamicNFTdata";
+
+let buildingIndex = 0;
 
 // This function is equivalent to the React component
 export function createCryptoEmbeddedCheckoutIFrame(
@@ -140,9 +141,9 @@ export function createCryptoEmbeddedCheckoutIFrame(
 async function getCryptoProps(account: Account) {
   const { mintRequest: mintReq, signature: sig } = await prepareSignatureMint(
     account?.address,
-    cityBuildings[9]
+    cityBuildings[buildingIndex]
   );
-
+  console.log("buildingIndex: ", buildingIndex);
   console.log("sig: ", sig);
   console.log("mintReq: ", mintReq);
 
@@ -188,17 +189,30 @@ async function getCryptoProps(account: Account) {
     mintConfig: {
       // type: "erc-721",
       totalPrice:
-        mintReq.currency.toLowerCase() === NATIVE_TOKEN_ADDRESS.toLowerCase()
+        mintReq?.currency.toLowerCase() === NATIVE_TOKEN_ADDRESS.toLowerCase()
           ? toEther(BigInt(mintReq.price))
-          : String(Number(mintReq.price) / 10 ** 6),
+          : String(Number(mintReq?.price) / 10 ** 6), // NOTE - 6 -decimal of USDC
       _req: mintReq, // mintRequest,
       _signature: sig, // signature
     },
-    onEvent: (event: { type: any; payload: { orderIdentifier: string } }) => {
+    onEvent: async (event: {
+      type: any;
+      payload: { orderIdentifier: string; error?: any };
+    }) => {
       switch (event.type) {
         case "payment:process.succeeded":
           const orderIdentifier = event.payload.orderIdentifier;
           Minting(orderIdentifier);
+          break;
+        case "payment:preparation.failed":
+          if (event?.payload?.error?.message === "Error(invalid signature)") {
+            buildingIndex += 1;
+            const props = await getCryptoProps(account);
+
+            if (!props) return;
+
+            createCryptoEmbeddedCheckoutIFrame(props);
+          }
           break;
         default:
           console.log(event);
@@ -209,8 +223,15 @@ async function getCryptoProps(account: Account) {
 }
 
 export const loadCryptoPayment = async (account?: Account) => {
-  if (account) {
-    const props = await getCryptoProps(account);
-    createCryptoEmbeddedCheckoutIFrame(props);
+  try {
+    if (account) {
+      const props = await getCryptoProps(account);
+
+      if (!props) return;
+
+      createCryptoEmbeddedCheckoutIFrame(props);
+    }
+  } catch (error) {
+    console.log("error in crypto: ", error);
   }
 };
