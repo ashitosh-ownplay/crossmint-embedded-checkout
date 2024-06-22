@@ -1,22 +1,22 @@
-import { collectionInfoTag } from "@components/collectionInfo";
 import { childDiv, parentDiv } from "../../index";
 import { crossmintParent } from "@components/crossmint";
 import { loadButtonsForPayment } from "@components/crossmint/paymentOptions";
+import { loadStorePackagesList } from "@components/storePackages";
 
-export const loadStorePackages = () => {
-  console.log("loading store packages");
+export const loadStorePackages = async () => {
+  //   // @ts-ignore
+  //   if (childDiv) {
+  //     // append collectino info with nft image
+  //     childDiv.appendChild(collectionInfoTag);
 
-  // @ts-ignore
-  if (childDiv) {
-    // append collectino info with nft image
-    childDiv.appendChild(collectionInfoTag);
+  //     // append crossmint payment
+  //     childDiv.appendChild(crossmintParent);
 
-    // append crossmint payment
-    childDiv.appendChild(crossmintParent);
+  //     // load the payment options
+  //     loadButtonsForPayment();
 
-    // load the payment options
-    loadButtonsForPayment();
+  //     parentDiv.appendChild(childDiv);
+  //   }
 
-    parentDiv.appendChild(childDiv);
-  }
+  await loadStorePackagesList();
 };

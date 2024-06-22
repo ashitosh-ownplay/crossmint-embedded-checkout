@@ -22,7 +22,7 @@ export const loadHomePage = () => {
   // Add embedded wallet
   storePackagesBtn.addEventListener("click", async () => {
     try {
-      loadStorePackages();
+      await loadStorePackages();
     } catch (e) {
       console.error("error connecting to embedded smart wallet", e);
     }
