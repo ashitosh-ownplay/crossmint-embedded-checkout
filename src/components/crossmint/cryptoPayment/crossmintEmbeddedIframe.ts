@@ -4,7 +4,7 @@ import {
   crossmintIFrameService,
   CrossmintEmbeddedCheckoutProps,
 } from "@client-sdk-base/src";
-import { crossmintParent } from "..";
+import { crossmintChild } from "..";
 
 type CrossmintEmbeddedCheckoutIFrameProps = CrossmintEmbeddedCheckoutProps & {
   onInternalEvent?: (event: IncomingInternalEvent) => void;
@@ -60,9 +60,9 @@ export function createCrossmintEmbeddedCheckoutIFrame(
   });
 
   // Append child to crossmint
-  if (crossmintParent) {
-    crossmintParent.innerHTML = "";
-    crossmintParent.appendChild(iframe);
+  if (crossmintChild) {
+    crossmintChild.innerHTML = "";
+    crossmintChild.appendChild(iframe);
   }
 
   // Cleanup function to remove listeners

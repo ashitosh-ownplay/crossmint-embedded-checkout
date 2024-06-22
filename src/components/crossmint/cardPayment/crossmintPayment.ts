@@ -16,7 +16,8 @@ import { cityBuildings } from "@configs/dynamicNFTdata";
 import { prepareSignatureMint } from "@utils/erc721MintSignature";
 import { NATIVE_TOKEN_ADDRESS, toEther } from "thirdweb";
 import { Account } from "thirdweb/wallets";
-import { crossmintParent } from "..";
+import { crossmintChild } from "..";
+import { IMintInfo } from "../../../types/index";
 
 let buildingIndex = 0;
 
@@ -81,9 +82,9 @@ function CrossmintEmbeddedCheckoutIFrame(
   });
 
   // Append child to crossmint
-  if (crossmintParent) {
-    crossmintParent.innerHTML = "";
-    crossmintParent.appendChild(iframe);
+  if (crossmintChild) {
+    crossmintChild.innerHTML = "";
+    crossmintChild.appendChild(iframe);
   }
 
   // Clean up function
@@ -136,11 +137,62 @@ async function getCardProps(account: Account) {
   };
 }
 
-export const loadCardPayment = async (account?: Account) => {
+async function getCardPropsForStorePackages(
+  account: Account,
+  mintInfo: IMintInfo
+) {
+  console.log("mintInfo: ", mintInfo);
+  const quantity = 1;
+
+  return {
+    projectId: crossmintProjectId,
+    collectionId: mintInfo?.collectionId,
+    environment: environment,
+    paymentMethod: PaymentMethod.FIAT,
+    preferredSigninMethod: "metamask",
+    recipient: { wallet: account?.address },
+    emailInputOptions: {
+      show: true,
+    },
+    mintConfig: {
+      totalPrice:
+        mintInfo?.claimCondition?.currency?.toLowerCase() ===
+        NATIVE_TOKEN_ADDRESS.toLowerCase()
+          ? toEther(mintInfo?.claimCondition?.pricePerToken * BigInt(quantity))
+          : String(
+              (quantity * Number(mintInfo?.claimCondition?.pricePerToken)) /
+                10 ** mintInfo?.currencyDecimals
+            ),
+      quantity: String(quantity),
+      tokenId: mintInfo?.tokenId,
+    },
+    onEvent: (event: { type: any; payload: { orderIdentifier: string } }) => {
+      switch (event.type) {
+        case "payment:process.succeeded":
+          const orderIdentifier = event.payload.orderIdentifier;
+          Minting(orderIdentifier);
+          break;
+        default:
+          console.log(event);
+          break;
+      }
+    },
+  };
+}
+
+export const loadCardPayment = async (
+  account?: Account,
+  mintInfo?: IMintInfo
+) => {
   try {
     if (account) {
-      const props = await getCardProps(account);
+      let props: any;
 
+      if (mintInfo) {
+        props = await getCardPropsForStorePackages(account, mintInfo);
+      } else {
+        props = await getCardProps(account);
+      }
       if (!props) return;
 
       CrossmintEmbeddedCheckoutIFrame(props);

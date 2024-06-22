@@ -1,27 +1,14 @@
-import { collectionInfoTag } from "@components/collectionInfo";
-import { crossmintParent } from "@components/crossmint";
-import { loadButtonsForPayment } from "@components/crossmint/paymentOptions";
+import { loadHomePage } from "@components/home/index";
 
-const parentDiv = document.createElement("div");
-parentDiv.className = "container mx-auto max-w-4xl bg-white";
+export const parentDiv = document.createElement("div");
+parentDiv.className = "container mx-auto bg-white w-full h-full";
 
-const childDiv = document.createElement("div");
-childDiv.className = "grid grid-cols-1 sm:grid-cols-5 sm:gap-4 p-4";
+export const childDiv = document.createElement("div");
+childDiv.className = "container mx-auto bg-white w-full h-full p-4";
 childDiv.setAttribute("id", "collection-info-parent");
 
-// append collectino info with nft image
-childDiv.appendChild(collectionInfoTag);
-
-// append crossmint payment
-childDiv.appendChild(crossmintParent);
-
-// // Load the payment component
-// loadPaynent();
-
-// load the payment options
-loadButtonsForPayment();
-
-parentDiv.appendChild(childDiv);
+// load home page
+loadHomePage();
 
 // append layout to body
 document.body.appendChild(parentDiv);
