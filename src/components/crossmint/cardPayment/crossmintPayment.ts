@@ -17,6 +17,7 @@ import { prepareSignatureMint } from "@utils/erc721MintSignature";
 import { NATIVE_TOKEN_ADDRESS, toEther } from "thirdweb";
 import { Account } from "thirdweb/wallets";
 import { crossmintChild } from "..";
+import { IMintInfo } from "../../../types/index";
 
 let buildingIndex = 0;
 
@@ -136,7 +137,10 @@ async function getCardProps(account: Account) {
   };
 }
 
-export const loadCardPayment = async (account?: Account) => {
+export const loadCardPayment = async (
+  account?: Account,
+  mintInfo?: IMintInfo
+) => {
   try {
     if (account) {
       const props = await getCardProps(account);

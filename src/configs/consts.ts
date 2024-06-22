@@ -148,6 +148,14 @@ export const reservoirChains: Record<string, any> = {
   },
 };
 
+export const nativeCurrencySymbol: Record<string, string> = {
+  polgonAmoy: "MATIC",
+  sepolia: "ETH",
+  arbitrumNova: "ETH",
+  base: "ETH",
+  baseSepolia: "ETH",
+};
+
 export const crossmintProjectId = process.env.CROSSMINT_PROJECT_ID;
 
 export const chainName = process.env.CHAIN_NAME || "sepolia";

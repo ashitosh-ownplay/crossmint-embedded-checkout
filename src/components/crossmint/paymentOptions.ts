@@ -11,6 +11,7 @@ import { client } from "@configs/client";
 import { chainName, chains, smartWalletFactory } from "@configs/consts";
 import { predictSmartWalletAddress } from "@utils/index";
 import { loadCryptoPayment } from "./cryptoPayment/cryptoPayment";
+import { IMintInfo } from "../../types/index";
 
 // Function to create a button element
 export function createButton(
@@ -67,7 +68,7 @@ export async function getSmartWallet() {
     console.log(error);
   }
 }
-export function loadButtonsForPayment() {
+export function loadButtonsForPayment(mintInfo?: IMintInfo) {
   const buttonContainer = document.createElement("div");
   buttonContainer.className = "flex space-x-4 p-4";
   buttonContainer.setAttribute("id", "button-container");
@@ -89,7 +90,7 @@ export function loadButtonsForPayment() {
       const res = await getSmartWallet();
       if (res) {
         const { smartAccount, wallet } = res;
-        await loadCryptoPayment(smartAccount, wallet);
+        await loadCryptoPayment(smartAccount, wallet, mintInfo);
       }
     } catch (e) {
       console.error("error connecting to embedded smart wallet", e);
@@ -101,7 +102,7 @@ export function loadButtonsForPayment() {
       const res = await getSmartWallet();
       if (res) {
         const { smartAccount, wallet } = res;
-        await loadCardPayment(smartAccount);
+        await loadCardPayment(smartAccount, mintInfo);
       }
     } catch (e) {
       console.error("error connecting to embedded smart wallet", e);

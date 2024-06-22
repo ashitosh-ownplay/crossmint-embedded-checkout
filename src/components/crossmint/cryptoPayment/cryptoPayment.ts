@@ -19,6 +19,7 @@ import {
   environment,
 } from "@configs/consts";
 import { cityBuildings } from "@configs/dynamicNFTdata";
+import { IMintInfo } from "../../../types/index";
 import { prepareSignatureMint } from "@utils/erc721MintSignature";
 import {
   NATIVE_TOKEN_ADDRESS,
@@ -231,10 +232,113 @@ async function getCryptoProps(account: Account, wallet?: Wallet) {
   };
 }
 
-export const loadCryptoPayment = async (account?: Account, wallet?: Wallet) => {
+async function getCryptoPropsForStorePackages(
+  account: Account,
+  mintInfo: IMintInfo,
+  wallet?: Wallet
+) {
+  console.log("mintInfo: ", mintInfo);
+  const quantity = 1;
+
+  // Example usage
+  return {
+    projectId: crossmintProjectId,
+    collectionId: mintInfo?.collectionId,
+    environment: environment,
+    paymentMethod: PaymentMethod.ETH,
+    recipient: { wallet: account?.address },
+    signer: {
+      address: account?.address, // public address of connected wallet
+      signAndSendTransaction: async (transaction: any) => {
+        const preparedTx = prepareTransaction({
+          chain: transaction.chainId,
+          nonce: transaction.nonce,
+          maxPriorityFeePerGas: BigInt(transaction.maxPriorityFeePerGas._hex),
+          maxFeePerGas: BigInt(transaction.maxFeePerGas._hex),
+          gas: BigInt(transaction.gasLimit._hex),
+          to: transaction.to,
+          value: BigInt(transaction.value._hex),
+          data: transaction.data,
+          accessList: transaction.accessList,
+          client: client,
+        });
+
+        const { transactionHash } = await sendAndConfirmTransaction({
+          // assuming you have called `prepareTransaction()` or `prepareContractCall()` before which returns the prepared transaction to send
+          transaction: preparedTx,
+          // Pass the account to sign the transaction with
+          account,
+        });
+
+        return transactionHash;
+      },
+      chain:
+        chainName === "base"
+          ? EVMBlockchainIncludingTestnet.BASE
+          : EVMBlockchainIncludingTestnet.ETHEREUM_SEPOLIA, // the currently selected chain
+      supportedChains: [
+        chainName === "base"
+          ? EVMBlockchainIncludingTestnet.BASE
+          : EVMBlockchainIncludingTestnet.ETHEREUM_SEPOLIA,
+      ], // array of chains you want to enable crosschain payments on
+      handleChainSwitch: async (chain: any) => {
+        console.log(chain);
+        // custom logic to trigger a network change in the connected wallet
+        wallet?.switchChain(chains[chainName]);
+      },
+    },
+    mintConfig: {
+      totalPrice:
+        mintInfo?.claimCondition?.currency?.toLowerCase() ===
+        NATIVE_TOKEN_ADDRESS.toLowerCase()
+          ? toEther(mintInfo?.claimCondition?.pricePerToken * BigInt(quantity))
+          : String(
+              (quantity * Number(mintInfo?.claimCondition?.pricePerToken)) /
+                10 ** mintInfo?.currencyDecimals
+            ),
+      quantity: String(quantity),
+      tokenId: mintInfo?.tokenId,
+    },
+    onEvent: async (event: {
+      type: any;
+      payload: { orderIdentifier: string; error?: any };
+    }) => {
+      switch (event.type) {
+        case "payment:process.succeeded":
+          const orderIdentifier = event.payload.orderIdentifier;
+          Minting(orderIdentifier);
+          break;
+        case "payment:preparation.failed":
+          if (event?.payload?.error?.message === "Error(invalid signature)") {
+            buildingIndex += 1;
+            const props = await getCryptoProps(account);
+
+            if (!props) return;
+
+            createCryptoEmbeddedCheckoutIFrame(props);
+          }
+          break;
+        default:
+          console.log(event);
+          break;
+      }
+    },
+  };
+}
+
+export const loadCryptoPayment = async (
+  account?: Account,
+  wallet?: Wallet,
+  mintInfo?: IMintInfo
+) => {
   try {
     if (account) {
-      const props = await getCryptoProps(account, wallet);
+      let props: any;
+      if (mintInfo) {
+        props = await getCryptoPropsForStorePackages(account, mintInfo, wallet);
+      } else {
+        props = await getCryptoProps(account, wallet);
+      }
 
       if (!props) return;
 

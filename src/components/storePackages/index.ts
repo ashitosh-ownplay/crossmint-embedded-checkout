@@ -34,8 +34,10 @@ const getTokensContent = async (
 
   for (let i = 0; i < nextTokenId; i++) {
     const nftCard = await NftCard(String(i), contractAddress, collectionId);
- 
-    flexBox.appendChild(nftCard);
+
+    if (nftCard) {
+      flexBox.appendChild(nftCard);
+    }
   }
 };
 
@@ -55,7 +57,7 @@ export const loadStorePackagesList = async () => {
 
       const netTokenIdToMint = await nextTokenIdToMint({ contract });
 
-      console.log("netTokenIdToMint: ", netTokenIdToMint);
+      console.log("nextTokenIdToMint: ", netTokenIdToMint);
 
       if (netTokenIdToMint) {
         await getTokensContent(

@@ -5,20 +5,24 @@ import {
   loadButtonsForPayment,
 } from "@components/crossmint/paymentOptions";
 import { client } from "@configs/client";
-import { chainName, chains } from "@configs/consts";
+import { chainName, chains, nativeCurrencySymbol } from "@configs/consts";
 import { ipfsUrlToHttp } from "@utils/index";
 import { parentDiv } from "../../index";
 import { childDiv } from "../../index";
-import { getContract } from "thirdweb";
+import { NATIVE_TOKEN_ADDRESS, getContract } from "thirdweb";
 import { getActiveClaimCondition, tokenUri } from "thirdweb/extensions/erc1155";
+import { symbol } from "thirdweb/extensions/common";
+import { decimals } from "thirdweb/extensions/erc20";
 
 export const NftCard = async (
   tokenId: string,
   contractAddress: string,
   collectionId: string
 ) => {
-  let claimCondition;
-  let tokenMetadata;
+  let claimCondition: any;
+  let tokenMetadata: any;
+  let currencySymbol: string | undefined;
+  let currencyDecimals: any;
 
   const contract = getContract({
     client,
@@ -34,6 +38,24 @@ export const NftCard = async (
 
     const result = await tokenUri({ contract, tokenId: BigInt(tokenId) });
     tokenMetadata = await (await fetch(ipfsUrlToHttp(result as string))).json();
+
+    if (!claimCondition) return;
+
+    if (
+      claimCondition?.currency?.toLowerCase() ===
+      NATIVE_TOKEN_ADDRESS.toLowerCase()
+    ) {
+      currencySymbol = nativeCurrencySymbol[chainName];
+    } else {
+      const tokenContract = getContract({
+        client,
+        address: claimCondition?.currency!,
+        chain: chains[chainName],
+      });
+
+      currencySymbol = await symbol({ contract: tokenContract });
+      currencyDecimals = await decimals({ contract: tokenContract });
+    }
   }
 
   // create nft card container
@@ -89,7 +111,12 @@ export const NftCard = async (
       childDiv.appendChild(crossmintParent);
 
       // load the payment options
-      loadButtonsForPayment();
+      loadButtonsForPayment({
+        collectionId,
+        tokenId,
+        currencyDecimals,
+        claimCondition,
+      });
 
       parentDiv.appendChild(childDiv);
     } catch (e) {
