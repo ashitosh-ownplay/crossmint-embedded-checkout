@@ -98,7 +98,10 @@ export const NftCard = async (
 
   buyWithCrossmintBtn.addEventListener("click", async () => {
     try {
-      const collectionInfo = await getCollectionInfo(contractAddress);
+      const collectionInfo = await getCollectionInfo(
+        contractAddress,
+        tokenMetadata
+      );
 
       childDiv.innerHTML = "";
       childDiv.className =

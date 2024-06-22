@@ -6,7 +6,10 @@ import { getContractMetadata } from "thirdweb/extensions/common";
 import { client } from "@configs/client";
 import { ipfsUrlToHttp } from "@utils/index";
 
-export const getCollectionInfo = async (contractAddress: string) => {
+export const getCollectionInfo = async (
+  contractAddress: string,
+  tokenMetadata?: any
+) => {
   const contract = getContract({
     client,
     chain: chains[chainName],
@@ -24,7 +27,9 @@ export const getCollectionInfo = async (contractAddress: string) => {
 
   // Create the Image element
   const image = document.createElement("img");
-  image.src = ipfsUrlToHttp(collectionInfo.image);
+  image.src = tokenMetadata?.image
+    ? ipfsUrlToHttp(tokenMetadata?.image)
+    : ipfsUrlToHttp(collectionInfo.image);
   image.width = 500;
   image.height = 500;
   image.className = "rounded-lg shrink w-500 h-500";
@@ -41,12 +46,13 @@ export const getCollectionInfo = async (contractAddress: string) => {
   // Create the first paragraph
   const paragraph1 = document.createElement("p");
   paragraph1.className = "text-sm text-black font-bold";
-  paragraph1.textContent = collectionInfo.name;
+  paragraph1.textContent = tokenMetadata?.name ?? collectionInfo.name;
 
   // Create the second paragraph
   const paragraph2 = document.createElement("p");
   paragraph2.className = "text-sm text-black";
-  paragraph2.textContent = collectionInfo.description;
+  paragraph2.textContent =
+    tokenMetadata?.description ?? collectionInfo.description;
 
   // Append paragraphs to the inner div
   innerDiv.appendChild(paragraph1);

@@ -137,14 +137,62 @@ async function getCardProps(account: Account) {
   };
 }
 
+async function getCardPropsForStorePackages(
+  account: Account,
+  mintInfo: IMintInfo
+) {
+  console.log("mintInfo: ", mintInfo);
+  const quantity = 1;
+
+  return {
+    projectId: crossmintProjectId,
+    collectionId: mintInfo?.collectionId,
+    environment: environment,
+    paymentMethod: PaymentMethod.FIAT,
+    preferredSigninMethod: "metamask",
+    recipient: { wallet: account?.address },
+    emailInputOptions: {
+      show: true,
+    },
+    mintConfig: {
+      totalPrice:
+        mintInfo?.claimCondition?.currency?.toLowerCase() ===
+        NATIVE_TOKEN_ADDRESS.toLowerCase()
+          ? toEther(mintInfo?.claimCondition?.pricePerToken * BigInt(quantity))
+          : String(
+              (quantity * Number(mintInfo?.claimCondition?.pricePerToken)) /
+                10 ** mintInfo?.currencyDecimals
+            ),
+      quantity: String(quantity),
+      tokenId: mintInfo?.tokenId,
+    },
+    onEvent: (event: { type: any; payload: { orderIdentifier: string } }) => {
+      switch (event.type) {
+        case "payment:process.succeeded":
+          const orderIdentifier = event.payload.orderIdentifier;
+          Minting(orderIdentifier);
+          break;
+        default:
+          console.log(event);
+          break;
+      }
+    },
+  };
+}
+
 export const loadCardPayment = async (
   account?: Account,
   mintInfo?: IMintInfo
 ) => {
   try {
     if (account) {
-      const props = await getCardProps(account);
+      let props: any;
 
+      if (mintInfo) {
+        props = await getCardPropsForStorePackages(account, mintInfo);
+      } else {
+        props = await getCardProps(account);
+      }
       if (!props) return;
 
       CrossmintEmbeddedCheckoutIFrame(props);

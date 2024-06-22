@@ -5,7 +5,7 @@ import { loadCityBuildings } from "./loadCityBuildings.";
 
 export const loadHomePage = () => {
   const buttonContainer = document.createElement("div");
-  buttonContainer.className = "flex space-x-4 p-4 w-auto h-auto";
+  buttonContainer.className = "flex flex-row justify-center p-4 gap-4 w-auto h-auto";
   buttonContainer.setAttribute("id", "button-container");
 
   // Initialize buttons
