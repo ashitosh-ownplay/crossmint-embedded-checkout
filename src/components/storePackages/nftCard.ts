@@ -61,7 +61,7 @@ export const NftCard = async (
   // create nft card container
   const nftCardContainer = document.createElement("div");
   nftCardContainer.className =
-    "flex flex-col justify-between items-center bg-white rounded-lg overflow-hidden shadow-lg max-w-80";
+    "flex flex-col justify-between items-center bg-white overflow-hidden shadow-lg w-96 max-w-96 p-2 rounded-lg border";
 
   // Create the Image element
   const image = document.createElement("img");
@@ -78,7 +78,7 @@ export const NftCard = async (
   // Create the inner div with classes
   const innerDiv = document.createElement("div");
   innerDiv.className =
-    "flex flex-col justify-between p-5 my-6 space-y-3 rounded-lg border";
+    "flex flex-col justify-between p-5 my-6 space-y-3 rounded-lg border w-full";
 
   // Create the first paragraph
   const paragraph1 = document.createElement("p");
