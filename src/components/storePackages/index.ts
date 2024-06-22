@@ -22,7 +22,8 @@ const getTokensContent = async (
   nftContainer.className = "container mx-auto p-4";
 
   const flexBox = document.createElement("div");
-  flexBox.className = "flex flex-row flex-wrap gap-4";
+  flexBox.className =
+    "flex flex-row flex-wrap gap-4 justify-center items-center";
 
   nftContainer.appendChild(flexBox);
 
