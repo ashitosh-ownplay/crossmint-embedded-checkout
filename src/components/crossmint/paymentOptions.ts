@@ -1,4 +1,4 @@
-import { crossmintParent } from ".";
+import { crossmintChild, crossmintParent } from ".";
 import { loadCardPayment } from "./cardPayment/crossmintPayment";
 import {
   Account,
@@ -117,5 +117,6 @@ export function loadButtonsForPayment() {
   if (crossmintParent) {
     crossmintParent.innerHTML = "";
     crossmintParent.appendChild(buttonContainer);
+    crossmintParent.appendChild(crossmintChild);
   }
 }

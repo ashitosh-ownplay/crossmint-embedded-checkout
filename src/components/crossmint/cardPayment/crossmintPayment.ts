@@ -16,7 +16,7 @@ import { cityBuildings } from "@configs/dynamicNFTdata";
 import { prepareSignatureMint } from "@utils/erc721MintSignature";
 import { NATIVE_TOKEN_ADDRESS, toEther } from "thirdweb";
 import { Account } from "thirdweb/wallets";
-import { crossmintParent } from "..";
+import { crossmintChild } from "..";
 
 let buildingIndex = 0;
 
@@ -81,9 +81,9 @@ function CrossmintEmbeddedCheckoutIFrame(
   });
 
   // Append child to crossmint
-  if (crossmintParent) {
-    crossmintParent.innerHTML = "";
-    crossmintParent.appendChild(iframe);
+  if (crossmintChild) {
+    crossmintChild.innerHTML = "";
+    crossmintChild.appendChild(iframe);
   }
 
   // Clean up function
