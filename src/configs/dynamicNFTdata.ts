@@ -131,7 +131,7 @@ export const giftPackages: ERC1155intWithSignatureParams[] = [
 export const cityBuildings: ERC721MintWithSignatureParams[] = [
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/0.json`,
-    price: !isUsdcEnabled ? "100000000000000" : "10000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "100000000000000" : "1", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6400",
     metadata: {
@@ -168,7 +168,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/1.json`,
-    price: !isUsdcEnabled ? "200000000000000" : "20000", // 0.02 MATIC OR // 0.02 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "200000000000000" : "2", // 0.02 MATIC OR // 0.02 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6401",
     metadata: {
@@ -205,7 +205,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/2.json`,
-    price: !isUsdcEnabled ? "300000000000000" : "30000", // 0.03 MATIC OR // 0.03 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "300000000000000" : "3", // 0.03 MATIC OR // 0.03 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6402",
     metadata: {
@@ -242,7 +242,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/3.json`,
-    price: !isUsdcEnabled ? "400000000000000" : "40000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "400000000000000" : "4", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6403",
     metadata: {
@@ -279,7 +279,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/4.json`,
-    price: "40000", // 0.05 USDC // ERC20 w. 6 decimals
+    price: "5", // 0.05 USDC // ERC20 w. 6 decimals
     currency: usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6404",
     metadata: {
@@ -316,7 +316,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/5.json`,
-    price: !isUsdcEnabled ? "100000000000000" : "10000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "100000000000000" : "6", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6405",
     metadata: {
@@ -353,7 +353,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/6.json`,
-    price: "20000", // 0.02 USDC // ERC20 w. 6 decimals
+    price: "7", // 0.02 USDC // ERC20 w. 6 decimals
     currency: usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6406",
     metadata: {
@@ -390,7 +390,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/7.json`,
-    price: !isUsdcEnabled ? "300000000000000" : "30000", // 0.03 MATIC OR // 0.03 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "300000000000000" : "8", // 0.03 MATIC OR // 0.03 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6407",
     metadata: {
@@ -427,7 +427,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/8.json`,
-    price: !isUsdcEnabled ? "400000000000000" : "40000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "400000000000000" : "9", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6408",
     metadata: {
@@ -464,7 +464,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/9.json`,
-    price: !isUsdcEnabled ? "500000000000000" : "50000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "500000000000000" : "10", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6409",
     metadata: {
@@ -501,7 +501,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/10.json`,
-    price: !isUsdcEnabled ? "100000000000000" : "10000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "100000000000000" : "10", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6410",
     metadata: {
@@ -538,7 +538,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/11.json`,
-    price: !isUsdcEnabled ? "200000000000000" : "20000", // 0.02 MATIC OR // 0.02 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "200000000000000" : "3", // 0.02 MATIC OR // 0.02 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6411",
     metadata: {
@@ -575,7 +575,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/12.json`,
-    price: !isUsdcEnabled ? "300000000000000" : "30000", // 0.03 MATIC OR // 0.03 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "300000000000000" : "10", // 0.03 MATIC OR // 0.03 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6412",
     metadata: {
@@ -612,7 +612,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/13.json`,
-    price: !isUsdcEnabled ? "400000000000000" : "40000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "400000000000000" : "2", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6413",
     metadata: {
@@ -649,7 +649,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/14.json`,
-    price: !isUsdcEnabled ? "500000000000000" : "50000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "500000000000000" : "4", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6414",
     metadata: {
@@ -686,7 +686,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/15.json`,
-    price: !isUsdcEnabled ? "100000000000000" : "10000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "100000000000000" : "5", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6415",
     metadata: {
@@ -723,7 +723,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/16.json`,
-    price: !isUsdcEnabled ? "200000000000000" : "20000", // 0.02 MATIC OR // 0.02 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "200000000000000" : "5", // 0.02 MATIC OR // 0.02 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6416",
     metadata: {
@@ -760,7 +760,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/17.json`,
-    price: !isUsdcEnabled ? "300000000000000" : "30000", // 0.03 MATIC OR // 0.03 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "300000000000000" : "8", // 0.03 MATIC OR // 0.03 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6417",
     metadata: {
@@ -797,7 +797,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/18.json`,
-    price: !isUsdcEnabled ? "400000000000000" : "40000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "400000000000000" : "9", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6418",
     metadata: {
@@ -834,7 +834,7 @@ export const cityBuildings: ERC721MintWithSignatureParams[] = [
   },
   {
     uri: `https://${thirdWebClientId}.ipfscdn.io/ipfs/bafybeie2d7amenmhvcpyg2chs3sqwqmza6olxcmpk4a2vcxwxqqagswe5y/19.json`,
-    price: !isUsdcEnabled ? "500000000000000" : "50000", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
+    price: !isUsdcEnabled ? "500000000000000" : "9", // 0.01 MATIC OR // 0.01 USDC // ERC20 w. 6 decimals
     currency: !isUsdcEnabled ? NATIVE_TOKEN_ADDRESS : usdcAddress[chainName],
     uid: "10000000-50fd-4a0c-b31b-31f1a56e6419",
     metadata: {
