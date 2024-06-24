@@ -1,5 +1,7 @@
-import { loadHomePage } from "@components/home/index";
 import { loadWalletOptions } from "@components/wallet";
+import { chainName } from "@configs/consts";
+
+console.log("chainame: ", chainName);
 
 export const parentDiv = document.createElement("div");
 parentDiv.className = "container mx-auto bg-white w-full h-full";
