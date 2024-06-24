@@ -27,7 +27,7 @@ export const cityBuildingsCollectionId: Record<string, string> = {
   // "arbitrumNova": "21c60d08-b1f9-4098-8fbd-5969a3b0cf87" // Dummy for now ... // eth
   arbitrumNova: "75b30a9b-6c06-4492-a8dc-a3b2a7a141af", // Dummy for now ... // usdc
   // "base": "23e3fa45-45b8-4b68-be18-fc80b627e742" // Dummy for now ... // eth
-  base: "e2b374bc-799b-479f-b958-8da538f5fdba", // Dummy for now ... // usdc
+  base: "3895004a-ce39-4d18-b6f7-32db2a75e1ea", // Dummy for now ... // usdc
   baseSepolia: "a1da7cbd-a873-4b0a-8e19-c44b85d4af76", // non-burnable city buildings usdc
 };
 export const packagesCollectionId: Record<string, string> = {
@@ -35,7 +35,7 @@ export const packagesCollectionId: Record<string, string> = {
   // sepolia: "d81dbe97-ca32-46bd-85fa-53eb2bbc9848", // eth
   sepolia: "c7e57fc1-17ee-4bed-9273-149264eddbd4", // usdc
   arbitrumNova: "e7a3ea0e-20ec-4bdf-984f-3af071d36f68", // Dummy for now ...
-  base: "1ee6f75f-e6e5-49ff-80a3-54f43e53e7c6", // Dummy for now...
+  base: "2b3f3580-1a63-44a0-9d57-74404d08e341", // Dummy for now...
   baseSepolia: "efc7d444-1838-4133-a377-0f17dee0659a",
 };
 
@@ -69,14 +69,14 @@ export const cityBuildingsNFTAddress: Record<string, string> = {
   sepolia: "0xbe2290df49503844B851Fb31694fD546b2667dD3", // non-burnable
   // "sepolia": "0xf688b7201f29953A6828D3834Bd7164Dfd051f28", // burnable city buildings
   arbitrumNova: "0x56D2b86dB9c8aa3fFFE5d4f9e54a51b31C975277", // Dummy for now ...
-  base: "0xA4E4A647f774e45df8f9EC9207f128B942616099", // Dummy for now ...
+  base: "0xBE27f83D6d9116C9bd0C610054b306d2A1f33D2f", // Dummy for now ...
   baseSepolia: "0xFfdd56faC3A5A87b574b1E9ed0F826879811d7D3",
 };
 export const packagesNFTAddress: Record<string, string> = {
   polgonAmoy: "",
   sepolia: "0x9506D39EDd348314E6Ad8665a54e50cd660D35f3",
   arbitrumNova: "0xb8043620Ef662995b5bcBB6E5c39162642304894", // Dummy for now ...
-  base: "0xeB85a0c71F935aCB22b5CcD7BBD7912AaaA8b0a9", // Dummt for now
+  base: "0x020FA69b70C0DF82A0BEf5f8f652e746E68079ed", // Dummt for now
   baseSepolia: "0x77Fc0BDE9a8380602F3Da53c2E43367237B1f6EE",
 };
 export const giftPackageNFTAddress: Record<string, string> = {
