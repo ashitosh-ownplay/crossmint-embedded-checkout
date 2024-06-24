@@ -12,6 +12,7 @@ import { chainName, chains, smartWalletFactory } from "@configs/consts";
 import { predictSmartWalletAddress } from "@utils/index";
 import { loadCryptoPayment } from "./cryptoPayment/cryptoPayment";
 import { IMintInfo } from "../../types/index";
+import { connectedWalletType, smartAccount, wallet } from "@components/wallet";
 
 // Function to create a button element
 export function createButton(
@@ -79,6 +80,12 @@ export function loadButtonsForPayment(mintInfo?: IMintInfo) {
     "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
   );
 
+  if (connectedWalletType === "embedded") {
+    cryptoButton.disabled = true;
+    cryptoButton.className =
+      "bg-gray-300 hover:bg-gray-300 text-white font-bold py-2 px-4 rounded";
+  }
+
   const cardButton = createButton(
     "Pay with Card",
     "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
@@ -87,9 +94,7 @@ export function loadButtonsForPayment(mintInfo?: IMintInfo) {
   // Add embedded wallet
   cryptoButton.addEventListener("click", async () => {
     try {
-      const res = await getSmartWallet();
-      if (res) {
-        const { smartAccount, wallet } = res;
+      if (wallet && smartAccount) {
         await loadCryptoPayment(smartAccount, wallet, mintInfo);
       }
     } catch (e) {
@@ -99,9 +104,7 @@ export function loadButtonsForPayment(mintInfo?: IMintInfo) {
 
   cardButton.addEventListener("click", async () => {
     try {
-      const res = await getSmartWallet();
-      if (res) {
-        const { smartAccount, wallet } = res;
+      if (wallet && smartAccount) {
         await loadCardPayment(smartAccount, mintInfo);
       }
     } catch (e) {

@@ -4,3 +4,5 @@ export interface IMintInfo {
   currencyDecimals?: any;
   claimCondition?: any;
 }
+
+export type walletTypes = "metamask" | "embedded";
